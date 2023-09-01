@@ -25,17 +25,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Sensor accelerometer;
     private float lastX, lastY, lastZ;
     private ImageView imageView;
-    private FragmentResults FragmentResults;
+    private FragmentResults fragmentResults;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (FragmentResults == null) {
-            FragmentResults = new FragmentResults();
+        if (fragmentResults == null) {
+            fragmentResults = new FragmentResults();
             FragmentManager fm = getSupportFragmentManager();
-            fm.beginTransaction().add(R.id.results, FragmentResults).commit();
+            fm.beginTransaction().add(R.id.results, fragmentResults).commit();
         }
 
         imageView = findViewById(R.id.imageView);
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         imageView.setRotation(x * 10);
 
         // Update UI components
-        FragmentResults.setXYZ(x, y, z);
+        fragmentResults.setXYZ(x, y, z);
 
         lastX = x;
         lastY = y;
